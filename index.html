@@ -1,0 +1,526 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Online Portfolio · III Academic Poster Session · UNEMI</title>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{
+  --navy:#0e2a4d; --navy-deep:#0b2342; --orange:#f47c20;
+  --bg:#ffffff; --bg-soft:#f6f7f9; --card:#ffffff; --ink:#0e2a4d; --muted:#5a6676; --line:#e4e8ee;
+  --ph-a:#c9d2de; --ph-b:#d6dde7; --ph-ink:#51627a;
+  box-sizing:border-box; padding-top:env(safe-area-inset-top,0px); padding-bottom:env(safe-area-inset-bottom,0px);
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg:#0f1b2d; --bg-soft:#13233a; --card:#182b45; --ink:#eaf0f8; --muted:#a3b2c6; --line:#243a58;
+    --ph-a:#22364f; --ph-b:#2a405b; --ph-ink:#9fb2c9; color-scheme:dark;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#0f1b2d; --bg-soft:#13233a; --card:#182b45; --ink:#eaf0f8; --muted:#a3b2c6; --line:#243a58;
+  --ph-a:#22364f; --ph-b:#2a405b; --ph-ink:#9fb2c9; color-scheme:dark;
+}
+*,*::before,*::after{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:calc(88px + env(safe-area-inset-top,0px));height:auto}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:"Manrope",system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;line-height:1.5;-webkit-font-smoothing:antialiased}
+a{color:inherit;text-decoration:none}
+:focus-visible{outline:3px solid var(--orange);outline-offset:3px}
+.wrap{max-width:1180px;margin:0 auto;padding:0 32px}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+
+.media>img{width:100%;height:100%;object-fit:cover;object-position:center 20%;display:block}
+
+/* Header */
+header{position:sticky;top:0;z-index:20;background:var(--bg);border-bottom:1px solid var(--line)}
+header .wrap{height:76px;display:flex;align-items:center;justify-content:space-between}
+.brand{display:flex;align-items:center;gap:16px}
+.logo{font-weight:800;font-size:34px;letter-spacing:-.03em;color:var(--ink);line-height:1;font-style:italic}
+.brand .sep{width:1px;height:34px;background:var(--muted);opacity:.5}
+.brand small{font-size:10.5px;letter-spacing:.14em;color:var(--muted);font-weight:600;line-height:1.5;text-transform:uppercase}
+nav{display:flex;gap:36px}
+nav a{font-size:14px;font-weight:500;padding:6px 0;border-bottom:2px solid transparent}
+nav a.on,nav a:hover{border-color:var(--orange)}
+
+/* Hero */
+.hero{position:relative;min-height:385px;color:#fff;background:linear-gradient(110deg,#091c36 0%,#0e2a4d 55%,#1b3f6b 100%);overflow:hidden}
+.hero .wrap{position:relative;z-index:2;padding-top:62px;padding-bottom:62px;display:grid;grid-template-columns:1.1fr .9fr;gap:40px;align-items:center}
+.eyebrow{font-size:11.5px;letter-spacing:.2em;font-weight:600;text-transform:uppercase;color:inherit;display:flex;gap:10px;align-items:center}
+.eyebrow::before{content:"/";color:var(--orange);font-weight:800;font-style:italic}
+.hero h1{font-size:clamp(40px,6vw,52px);line-height:1.08;letter-spacing:-.025em;margin:22px 0 18px;font-weight:700}
+.hero h1 em{font-style:normal;color:var(--orange)}
+.hero p{font-size:17px;max-width:420px;margin:0 0 22px;line-height:1.5}
+.bar{display:block;width:73px;height:3px;background:var(--orange)}
+.meta{list-style:none;margin:26px 0 0;padding:0;display:flex;flex-wrap:wrap;gap:8px}
+.meta li{font-size:11.5px;font-weight:600;letter-spacing:.03em;padding:5px 11px;border:1px solid rgba(255,255,255,.28);border-radius:999px;color:#dbe5f3}
+.hero figure{margin:0;justify-self:end}
+.hero figure img{display:block;width:100%;max-width:330px;height:auto;border-radius:6px;box-shadow:0 18px 40px rgba(0,0,0,.35)}
+
+/* Section layout shared */
+.split{display:grid;grid-template-columns:290px 1fr;gap:20px;align-items:start}
+.intro .eyebrow{color:var(--muted);margin-top:18px}
+.intro h2{font-size:28px;line-height:1.15;letter-spacing:-.02em;margin:18px 0 22px;font-weight:700}
+.intro p{font-size:13.5px;color:var(--muted);margin:0;line-height:1.75}
+
+/* Event info */
+.info{padding:48px 0 44px}
+.tiles{display:grid;grid-template-columns:repeat(2,1fr);gap:11px}
+.tile{background:var(--bg-soft);border:1px solid var(--line);border-radius:4px;padding:18px 20px 20px}
+.tile.wide{grid-column:1/-1}
+.tile .role{margin:0 0 8px}
+.tile p{margin:0;font-size:13.5px;line-height:1.65;color:var(--ink)}
+
+/* Team */
+.team{background:var(--bg-soft);padding:48px 0 36px}
+.members{display:grid;grid-template-columns:repeat(4,1fr);gap:11px}
+.member{background:var(--card);border:1px solid var(--line);border-radius:4px;overflow:hidden}
+.member .media{aspect-ratio:3/3.9;overflow:hidden}
+.member .body{padding:16px 15px 18px;min-height:128px}
+.member h3{margin:0;font-size:14px;font-weight:700}
+.role{display:block;margin:6px 0 12px;font-size:9.5px;letter-spacing:.12em;font-weight:700;color:var(--orange);text-transform:uppercase}
+.member p{margin:0;font-size:12px;color:var(--muted);line-height:1.65}
+
+/* Week 5 */
+.acts{background:var(--navy);color:#fff;padding:46px 0 46px}
+.acts .intro .eyebrow{color:#cfd9e8}
+.acts .intro p{color:#d4deed;font-size:13.5px;margin:0 0 28px}
+.acts h2 em,.banner h2 em{font-style:normal;color:var(--orange)}
+.cards3{display:grid;grid-template-columns:repeat(3,1fr);gap:11px}
+.cards3.top{align-items:start}
+.card{background:#f6f7f9;color:#0e2a4d;border-radius:4px;overflow:hidden;display:flex;flex-direction:column}
+.card .media{overflow:hidden;background:#0b141a}
+.card .media.nat>img{height:auto;object-fit:contain}
+.card .body{padding:14px 16px 20px}
+.card h3{margin:0 0 10px;font-size:14px;font-weight:700}
+.card p{margin:0;font-size:12px;color:#5a6676;line-height:1.65}
+.card p+p{margin-top:10px}
+.card .who{display:block;margin-top:12px;font-size:10.5px;font-weight:700;letter-spacing:.04em;color:#0e2a4d}
+.card .who b{color:var(--orange);font-weight:800}
+.card.rec .role{margin:4px 0 12px}
+.block{margin-top:38px}
+.block>.eyebrow{color:#cfd9e8;margin-bottom:16px}
+.status{display:grid;grid-template-columns:1fr 1fr;gap:11px}
+.panel{background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.14);border-radius:4px;padding:20px 22px}
+.panel h3{margin:0 0 12px;font-size:14px;font-weight:700;display:flex;align-items:center;gap:10px}
+.panel h3 i{display:inline-block;width:9px;height:9px;border-radius:50%;background:#5fd08a}
+.panel.pend h3 i{background:var(--orange)}
+.panel ul{margin:0;padding-left:18px;font-size:13px;line-height:1.7;color:#dbe5f3}
+.panel li+li{margin-top:4px}
+.banner{position:relative;border-radius:4px;overflow:hidden;min-height:200px;display:flex;align-items:center;background:linear-gradient(110deg,#12335c 0%,#1f4f7e 100%);border:1px solid rgba(255,255,255,.08);margin-top:38px}
+.banner .txt{position:relative;z-index:2;max-width:620px;padding:36px}
+.banner .eyebrow{font-size:9.5px}
+.banner h2{font-size:24px;line-height:1.2;letter-spacing:-.015em;margin:14px 0 14px;font-weight:700}
+.banner p{font-size:12.5px;color:#d4deed;margin:0;line-height:1.7}
+
+/* Week 10 · Event gallery */
+.gallery-sec{background:var(--bg);padding:56px 0 60px}
+.gallery-sec .intro .bar{margin-top:22px}
+.gal-grid{columns:3;column-gap:14px}
+@media (max-width:960px){.gal-grid{columns:2}}
+@media (max-width:640px){.gal-grid{columns:1}}
+.gal-item{break-inside:avoid;-webkit-column-break-inside:avoid;page-break-inside:avoid;display:inline-block;width:100%;margin:0 0 14px;background:var(--card);border:1px solid var(--line);border-radius:6px;overflow:hidden}
+.gal-item .ph{overflow:hidden;background:var(--ph-a)}
+.gal-item img{width:100%;height:auto;display:block;cursor:zoom-in;transition:transform .5s ease}
+.gal-item:hover img{transform:scale(1.04)}
+.gal-item figcaption{padding:13px 15px 16px}
+.gal-item h3{margin:0 0 6px;font-size:13.5px;font-weight:700;line-height:1.3}
+.gal-item p{margin:0;font-size:11.5px;color:var(--muted);line-height:1.6}
+.gal-item .who{display:block;margin-top:10px;font-size:10px;font-weight:700;letter-spacing:.04em;color:var(--ink)}
+.gal-item .who b{color:var(--orange);font-weight:800}
+.gal-foot{margin-top:26px;background:var(--bg-soft);border:1px solid var(--line);border-radius:6px;padding:22px 24px}
+.gal-foot p{margin:0;font-size:13px;color:var(--muted);line-height:1.7}
+.gal-foot b{color:var(--ink)}
+
+.lightbox{position:fixed;inset:0;z-index:100;display:none;align-items:center;justify-content:center;background:rgba(6,16,30,.92);padding:24px}
+.lightbox.open{display:flex}
+.lightbox img{max-width:94vw;max-height:88vh;border-radius:6px;box-shadow:0 24px 70px rgba(0,0,0,.6)}
+.lightbox .lb-close{position:absolute;top:18px;right:22px;background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.3);color:#fff;font-size:22px;line-height:1;width:42px;height:42px;border-radius:50%;cursor:pointer;display:flex;align-items:center;justify-content:center}
+.lightbox .lb-close:hover{background:rgba(255,255,255,.22)}
+
+/* Footer */
+footer{background:var(--navy-deep);color:#fff;padding:36px 0}
+footer .wrap{display:grid;grid-template-columns:1fr 1fr auto;align-items:center;gap:24px}
+footer .logo{color:#fff;font-size:30px}
+footer .brand small{color:#d4deed;font-size:9.5px}
+footer .brand .sep{background:#fff}
+footer .tag{font-style:italic;font-size:11.5px;color:#cfd9e8;border-left:1px solid rgba(255,255,255,.35);padding-left:56px;height:38px;display:flex;align-items:center}
+.slashes{font-size:34px;font-weight:800;font-style:italic;letter-spacing:-.05em;line-height:1}
+.slashes b{color:var(--orange)}.slashes i{color:#2d4d78}
+
+@media (max-width:960px){
+  .split,.hero .wrap{grid-template-columns:1fr}
+  .hero figure{justify-self:start}
+  .members{grid-template-columns:repeat(2,1fr)}
+  .cards3{grid-template-columns:1fr}
+  .tiles,.status{grid-template-columns:1fr}
+  .banner .txt{padding:28px 24px}
+  footer .wrap{grid-template-columns:1fr}
+  footer .tag{border:0;padding:0;height:auto}
+}
+@media (max-width:640px){
+  .wrap{padding:0 20px}
+  .brand small{display:none}
+  nav{gap:18px}
+  .members{grid-template-columns:1fr}
+}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap">
+    <a class="brand" href="#inicio" aria-label="UNEMI, Universidad Estatal de Milagro">
+      <span class="logo">UNEMI</span><span class="sep"></span>
+      <small>Universidad Estatal<br>de Milagro</small>
+    </a>
+    <nav aria-label="Main">
+      <a href="#inicio" class="on">Home</a>
+      <a href="#evento">Event</a>
+      <a href="#integrantes">Members</a>
+      <a href="#semana5">Week 5</a>
+      <a href="#semana10">Week 10</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+<section class="hero" id="inicio">
+  <div class="wrap">
+    <div>
+      <div class="eyebrow">Online portfolio · Group A</div>
+      <h1>III Academic<br><em>Poster Session</em></h1>
+      <p>Planning, teamwork and preparation of a real academic event for future English teachers.</p>
+      <span class="bar"></span>
+      <ul class="meta">
+        <li>Academic events &amp; conventions</li>
+        <li>7th, B1</li>
+        <li>August – December</li>
+        <li>MSc. Fernando Riera Hermida</li>
+      </ul>
+    </div>
+    <figure>
+      <img src="img/qr-registro.jpg" alt="Official poster of the III Academic Poster Session with the registration QR code">
+    </figure>
+  </div>
+</section>
+
+<section class="info" id="evento">
+  <div class="wrap split">
+    <div class="intro">
+      <div class="eyebrow">Event information</div>
+      <h2>About the<br>event</h2>
+      <p>Faculty of Education · Pedagogy of National and Foreign Languages Programme · Universidad Estatal de Milagro.</p>
+    </div>
+    <div class="tiles">
+      <div class="tile"><span class="role">Name of the event</span><p>III Academic Poster Session (Poster Session)</p></div>
+      <div class="tile"><span class="role">Date and location</span><p>October 13th · Auditorium W</p></div>
+      <div class="tile"><span class="role">Target audience</span><p>Pedagogy of National and Foreign Languages students</p></div>
+      <div class="tile"><span class="role">Expected outcomes</span><p>To successfully showcase students' research, encourage knowledge sharing and provide an organized and accessible poster session for all participants.</p></div>
+      <div class="tile wide"><span class="role">Purpose</span><p>To enable students and future English teachers to broaden their understanding, hone their expertise, and enrich their pedagogical and methodological techniques and strategies in the sphere of English language teaching and learning.</p></div>
+      <div class="tile wide"><span class="role">Brief description</span><p>A Poster Session where students present their research projects and share their findings with other participants in an academic setting.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="team" id="integrantes">
+  <div class="wrap split">
+    <div class="intro">
+      <div class="eyebrow">Group organization</div>
+      <h2>Eight people,<br>one team</h2>
+      <p>Group A: students of 7th semester, B1. Every member has an identifiable role in the organization of the event.</p>
+    </div>
+    <div class="members">
+      <article class="member">
+        <div class="media"><img src="img/chuto.jpg" alt="Portrait of Luis Fernando Chuto Nauya"></div>
+        <div class="body"><h3>Luis Fernando Chuto Nauya</h3><span class="role">QR codes &amp; registration</span><p>Generates and tests the QR codes and links for attendance registration.</p></div>
+      </article>
+      <article class="member">
+        <div class="media"><img src="img/lema.jpg" alt="Portrait of Cristhian Javier Lema Paucar"></div>
+        <div class="body"><h3>Cristhian Javier Lema Paucar</h3><span class="role">Audio booth</span><p>In charge of the audio booth in the auditorium.</p></div>
+      </article>
+      <article class="member">
+        <div class="media"><img src="img/ivis.jpg" alt="Portrait of Ivis Dejanira Mata Flores"></div>
+        <div class="body"><h3>Ivis Dejanira Mata Flores</h3><span class="role">Tech support</span><p>Provides real-time tech support during the event.</p></div>
+      </article>
+      <article class="member">
+        <div class="media"><img src="img/wilmer.jpg" alt="Portrait of Wilmer Sandro Patiño Cuastuza"></div>
+        <div class="body"><h3>Wilmer Sandro Patiño Cuastuza</h3><span class="role">Tech support</span><p>Provides real-time tech support during the event.</p></div>
+      </article>
+      <article class="member">
+        <div class="media"><img src="img/julissa.jpg" alt="Portrait of Julissa Esmeralda Pilamunga Gavilanes"></div>
+        <div class="body"><h3>Julissa Esmeralda Pilamunga Gavilanes</h3><span class="role">Background music</span><p>Selects the background music and the sound cues for speaker timing.</p></div>
+      </article>
+      <article class="member">
+        <div class="media"><img src="img/pomagualli.jpg" alt="Portrait of Adrian Alexander Pomagualli Inga"></div>
+        <div class="body"><h3>Adrian Alexander Pomagualli Inga</h3><span class="role">QR codes &amp; registration</span><p>Generates and tests the QR codes and links for attendance registration.</p></div>
+      </article>
+      <article class="member">
+        <div class="media"><img src="img/brithany.jpg" alt="Portrait of Brithany Dayanna Trejo Delgado"></div>
+        <div class="body"><h3>Brithany Dayanna Trejo Delgado</h3><span class="role">Background music</span><p>Selects the background music that matches the theme of the event.</p></div>
+      </article>
+      <article class="member">
+        <div class="media"><img src="img/alexa.jpg" alt="Portrait of Alexa Andrea Zorrilla Romero"></div>
+        <div class="body"><h3>Alexa Andrea Zorrilla Romero</h3><span class="role">Posters &amp; platform</span><p>Collects the posters and uploads them to the online platform.</p></div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section class="acts" id="semana5">
+  <div class="wrap">
+    <div class="split">
+      <div class="intro">
+        <div class="eyebrow">Week 5 · Planning and preparation</div>
+        <h2>Progress<br><em>evidence</em></h2>
+        <p>Real evidence of the work completed while preparing the event: meetings, role selection and registration materials.</p>
+        <span class="bar"></span>
+      </div>
+      <div class="cards3 top">
+        <article class="card">
+          <div class="media nat"><img src="img/reunion-roles.jpg" alt="Group video call where the roles for logistics and technical support are being established"></div>
+          <div class="body"><h3>Group meeting</h3><p>Meeting to establish the various roles to be performed regarding logistics and technical support.</p><span class="who"><b>/</b> Responsible: all group members</span></div>
+        </article>
+        <article class="card">
+          <div class="media nat"><img src="img/encuesta-roles.jpg" alt="WhatsApp poll with the options for Logistics and Technical Support roles"></div>
+          <div class="body"><h3>Role selection</h3><p>Poll in the group chat to select the roles to be performed by each group member.</p><span class="who"><b>/</b> Responsible: all group members</span></div>
+        </article>
+        <article class="card">
+          <div class="media nat"><img src="img/qr-registro.jpg" alt="Registration poster with QR code for the III Academic Poster Session"></div>
+          <div class="body"><h3>Registration QR code</h3><p>Design and creation of the QR code for registering attendance at the event.</p><span class="who"><b>/</b> Responsible: Luis Fernando Chuto &amp; Adrian Pomagualli</span></div>
+        </article>
+      </div>
+    </div>
+
+    <div class="block">
+      <div class="eyebrow">Task status</div>
+      <div class="status">
+        <div class="panel">
+          <h3><i></i>Tasks already completed</h3>
+          <ul>
+            <li>Collecting the posters to be presented on the day of the event.</li>
+            <li>Creating an attendance registration form.</li>
+            <li>Selecting music appropriate for the event.</li>
+            <li>Choosing the person responsible for the event's audiovisual logistics.</li>
+            <li>Design and creation of the QR code for registering attendance.</li>
+          </ul>
+        </div>
+        <div class="panel pend">
+          <h3><i></i>Tasks still pending</h3>
+          <ul>
+            <li>Test the auditorium's audio system the day before the event to resolve any existing or potential technical issues.</li>
+            <li>Upload the collected posters to the online platform.</li>
+            <li>Convert the test code to the final QR code a few days before the event.</li>
+            <li>Finalize and order the background music playlist.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="block">
+      <div class="eyebrow">Individual responsibility record</div>
+      <div class="cards3">
+        <article class="card rec"><div class="body">
+          <h3>Alexa Zorrilla Romero</h3><span class="role">Posters &amp; platform</span>
+          <p>My responsibility is to collect the posters from the participants and upload them to the online platform for the poster session event. So far, I have organized the posters I have received and checked that they are ready to be uploaded to the platform. I still have to actually upload the posters to the online platform before the event. My work helps ensure that all the posters are available online and easily accessible to participants and attendees; this contributes to the organization of the poster session and helps the event run smoothly.</p>
+        </div></article>
+        <article class="card rec"><div class="body">
+          <h3>Julissa Pilamunga Gavilanes</h3><span class="role">Background music</span>
+          <p>My role involves searching through a wide selection of music to find tracks that suit the event's theme (in this case, an academic event) to create a calm, pleasant atmosphere for all attendees. I am also responsible for choosing subtle sound cues to alert participants and moderators when their time is running out, helping them manage their time more effectively.</p>
+        </div></article>
+        <article class="card rec"><div class="body">
+          <h3>Luis Chuto &amp; Adrian Pomagualli</h3><span class="role">QR codes &amp; registration</span>
+          <p>The task assigned to us is to create a registration form for the academic poster session. The form is currently being tested, as we need to verify that it only accepts university email addresses. Additionally, the QR code is being tested to ensure it remains active until the day of the presentation. The only remaining task is to convert the test code to a QR code a few days before the event. Our work will contribute to gathering attendance data for this excellent event, the third edition of the academic poster session. This will help ensure the event is well-received by the audience attending the National and Foreign Language Pedagogy program.</p>
+        </div></article>
+        <article class="card rec"><div class="body">
+          <h3>Cristhian Lema Paucar</h3><span class="role">Audio booth</span>
+          <p>I am responsible for managing sound and audio playback during the event. My duties include ensuring balanced volume levels for all auditorium microphones. So far, I have identified all sound requirements (batteries for the microphones). I must conduct an audio test prior to the event to ensure sound quality. Clear audio is essential for effective communication, especially in these events where the audience needs to hear every speech, presentation and multimedia resource without distortion or interruptions. By keeping the sound seamless and balanced, my work helps maintain professional standards and ensures the audience stays fully engaged.</p>
+        </div></article>
+        <article class="card rec"><div class="body">
+          <h3>Brithany Trejo Delgado</h3><span class="role">Background music</span>
+          <p>My responsibility is to select the background music for the event and make sure it matches the theme and atmosphere. So far, I have researched and chosen suitable songs for different moments of the event. Considering their rhythm and mood, I still need to finalize the playlist and organize the songs in the correct order. My work contributes to the success of the event by creating a pleasant atmosphere, keeping the audience engaged and making each moment more enjoyable.</p>
+        </div></article>
+        <article class="card rec"><div class="body">
+          <h3>Ivis Mata Flores &amp; Wilmer Patiño</h3><span class="role">Tech support</span>
+          <p>Our responsibility is to provide technical support during the event. We will assist participants, presenters, and moderators if they have any issues with presentations, audio, video, internet connection, or the online platform. We will also be attentive during the activities in case any technical problems arise and try to resolve them as quickly as possible. This will ensure the event continues smoothly and avoids unnecessary disruptions.</p>
+        </div></article>
+      </div>
+    </div>
+
+    <div class="banner">
+      <div class="txt">
+        <div class="eyebrow">What comes next</div>
+        <h2>The story <em>continues</em></h2>
+        <p>This portfolio will be updated with the event gallery and video (Week 10) and the promotional video for next year's edition (Week 13).</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="gallery-sec" id="semana10">
+  <div class="wrap">
+    <div class="split">
+      <div class="intro">
+        <div class="eyebrow">Week 10 · Academic event</div>
+        <h2>Event<br>photo gallery</h2>
+        <p>The III Academic Poster Session took place on October 13th in Auditorium W. These are the best real photographs of the day: opening, presentations, awards and the team behind the event.</p>
+        <span class="bar"></span>
+      </div>
+      <div>
+        <div class="gal-grid">
+          <figure class="gal-item">
+            <div class="ph"><img src="gallery/03c0a54f-c36d-4000-9500-e2083e6633a0.jpeg" alt="Full auditorium group photo of participants, speakers and organizers at the close of the event" loading="lazy"></div>
+            <figcaption>
+              <h3>Closing group photo</h3>
+              <p>Participants, guests and the organizing team together at the end of the III Academic Poster Session.</p>
+              <span class="who"><b>/</b> All group members</span>
+            </figcaption>
+          </figure>
+          <figure class="gal-item">
+            <div class="ph"><img src="gallery/130134c3-e652-4f9f-9c3d-22c4efade37b.jpeg" alt="Student in a blue costume carrying a staff during a theatrical opening performance on the auditorium stairs" loading="lazy"></div>
+            <figcaption>
+              <h3>Opening performance</h3>
+              <p>A theatrical act presented on stage before the academic presentations began.</p>
+              <span class="who"><b>/</b> Group members · cultural act</span>
+            </figcaption>
+          </figure>
+          <figure class="gal-item">
+            <div class="ph"><img src="gallery/28ae42d8-7750-4739-8ea0-291c9b99a75d.jpeg" alt="Two members of the organizing team standing in front of the event's main screen" loading="lazy"></div>
+            <figcaption>
+              <h3>Organizing team at the main screen</h3>
+              <p>Members of the team pose in front of the welcome screen minutes after the event opened.</p>
+              <span class="who"><b>/</b> Organizing team</span>
+            </figcaption>
+          </figure>
+          <figure class="gal-item">
+            <div class="ph"><img src="gallery/2d299478-6feb-4378-af20-0d341b103528.jpeg" alt="Organizers and guests holding recognition boxes in front of the poster session screen" loading="lazy"></div>
+            <figcaption>
+              <h3>Recognition of participants</h3>
+              <p>Delivery of recognition boxes to the people who made the event possible.</p>
+              <span class="who"><b>/</b> All group members · logistics</span>
+            </figcaption>
+          </figure>
+          <figure class="gal-item">
+            <div class="ph"><img src="gallery/4b16c449-9a88-4b85-91b2-c5c5c4296938.jpeg" alt="Group of students in Roman costumes standing on stage with the Ecuadorian and UNEMI flags" loading="lazy"></div>
+            <figcaption>
+              <h3>Cultural act on stage</h3>
+              <p>Students in period costumes during the opening ceremony, next to the university flags.</p>
+              <span class="who"><b>/</b> Group members · cultural act</span>
+            </figcaption>
+          </figure>
+          <figure class="gal-item">
+            <div class="ph"><img src="gallery/5dadc16d-6b20-4f1c-822b-503503e7c8cb.jpeg" alt="Guest speaker giving the opening speech at the wooden podium with a microphone" loading="lazy"></div>
+            <figcaption>
+              <h3>Opening speech</h3>
+              <p>A guest speaker welcomes the audience and introduces the purpose of the poster session.</p>
+              <span class="who"><b>/</b> Audio booth: Cristhian Lema</span>
+            </figcaption>
+          </figure>
+          <figure class="gal-item">
+            <div class="ph"><img src="gallery/7bda0cb3-fb3f-4d91-892f-6dbad6e4dbb7.jpeg" alt="Four organizers holding recognition boxes in front of the event screen" loading="lazy"></div>
+            <figcaption>
+              <h3>Closing ceremony</h3>
+              <p>Organizers and guests with the recognition boxes handed out at the end of the event.</p>
+              <span class="who"><b>/</b> All group members · logistics</span>
+            </figcaption>
+          </figure>
+          <figure class="gal-item">
+            <div class="ph"><img src="gallery/7e0d1b86-69cb-46ec-bf3f-a3e4ea81b992.jpeg" alt="Student in a Roman tunic performing a theatrical monologue on stage" loading="lazy"></div>
+            <figcaption>
+              <h3>Theatrical presentation</h3>
+              <p>A student performs a monologue as part of the cultural program before the poster presentations.</p>
+              <span class="who"><b>/</b> Group members · cultural act</span>
+            </figcaption>
+          </figure>
+          <figure class="gal-item">
+            <div class="ph"><img src="gallery/82f80ccc-40f2-4e61-b40f-a702565f49de.jpeg" alt="Student presenting research results with a microphone in front of a data slide" loading="lazy"></div>
+            <figcaption>
+              <h3>Academic presentation</h3>
+              <p>A student presents the results of her research project to the audience.</p>
+              <span class="who"><b>/</b> Tech support: Ivis Mata &amp; Wilmer Patiño</span>
+            </figcaption>
+          </figure>
+          <figure class="gal-item">
+            <div class="ph"><img src="gallery/94467282-7bd1-4465-9e09-b3ae265f70d7.jpeg" alt="Two participants holding a gift bag in front of the poster session welcome screen" loading="lazy"></div>
+            <figcaption>
+              <h3>Participants after their presentation</h3>
+              <p>Two attendees pose with their gift after taking part in the academic activities.</p>
+              <span class="who"><b>/</b> Registration: Luis Chuto &amp; Adrian Pomagualli</span>
+            </figcaption>
+          </figure>
+          <figure class="gal-item">
+            <div class="ph"><img src="gallery/c53efe94-8a31-4c88-8d6d-bd20cdb71cc1.jpeg" alt="Student presenting a research poster on screen while speaking with a microphone" loading="lazy"></div>
+            <figcaption>
+              <h3>Poster presentation</h3>
+              <p>A presenter explains her research poster to the audience during the session.</p>
+              <span class="who"><b>/</b> Posters &amp; platform: Alexa Zorrilla</span>
+            </figcaption>
+          </figure>
+          <figure class="gal-item">
+            <div class="ph"><img src="gallery/e657abc0-d6c9-4390-856e-d631ef732afb.jpeg" alt="Evaluation panel seated at a decorated table during the academic event" loading="lazy"></div>
+            <figcaption>
+              <h3>Evaluation panel</h3>
+              <p>Judges follow the presentations from the main table during the event.</p>
+              <span class="who"><b>/</b> Logistics &amp; protocol team</span>
+            </figcaption>
+          </figure>
+          <figure class="gal-item">
+            <div class="ph"><img src="gallery/e7b054d4-db85-42dc-bc08-1a749d582dba.jpeg" alt="Organizers holding a scientific article award certificate at the award ceremony" loading="lazy"></div>
+            <figcaption>
+              <h3>Award ceremony</h3>
+              <p>Announcement of the winners and delivery of the scientific article awards.</p>
+              <span class="who"><b>/</b> All group members · protocol</span>
+            </figcaption>
+          </figure>
+        </div>
+        <div class="gal-foot">
+          <p><b>Event video:</b> the 3–5 minute video documenting the event will be added to this section. All photographs are real evidence captured by the group during the preparation and execution of the III Academic Poster Session.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+</main>
+
+<div class="lightbox" id="lightbox" aria-hidden="true">
+  <button class="lb-close" type="button" aria-label="Close image">&times;</button>
+  <img src="" alt="">
+</div>
+
+<footer>
+  <div class="wrap">
+    <div class="brand">
+      <span class="logo">UNEMI</span><span class="sep"></span>
+      <small>Universidad Estatal<br>de Milagro</small>
+    </div>
+    <div class="tag">Faculty of Education · Pedagogy of National<br>and Foreign Languages · Milagro, Ecuador</div>
+    <div class="slashes" aria-hidden="true"><b>/</b><i>/</i><i>/</i><i>/</i></div>
+  </div>
+</footer>
+
+<script>
+// Highlight the nav link of the section in view
+(function(){
+  var links=document.querySelectorAll('nav a'),secs=['inicio','evento','integrantes','semana5','semana10'].map(function(i){return document.getElementById(i)});
+  if(!('IntersectionObserver' in window))return;
+  var io=new IntersectionObserver(function(es){es.forEach(function(e){
+    if(e.isIntersecting){links.forEach(function(a){a.classList.toggle('on',a.getAttribute('href')==='#'+e.target.id)})}
+  })},{rootMargin:'-40% 0px -55% 0px'});
+  secs.forEach(function(s){s&&io.observe(s)});
+})();
+
+// Lightbox for the event gallery
+(function(){
+  var lb=document.getElementById('lightbox'),lbImg=lb.querySelector('img'),btn=lb.querySelector('.lb-close');
+  function open(src,alt){lbImg.src=src;lbImg.alt=alt||'';lb.classList.add('open');lb.setAttribute('aria-hidden','false');document.body.style.overflow='hidden'}
+  function close(){lb.classList.remove('open');lb.setAttribute('aria-hidden','true');document.body.style.overflow='';lbImg.src=''}
+  document.querySelectorAll('.gal-item img').forEach(function(img){
+    img.addEventListener('click',function(){open(img.currentSrc||img.src,img.alt)});
+  });
+  btn.addEventListener('click',close);
+  lb.addEventListener('click',function(e){if(e.target===lb)close()});
+  document.addEventListener('keydown',function(e){if(e.key==='Escape'&&lb.classList.contains('open'))close()});
+})();
+</script>
+</body>
+</html>
