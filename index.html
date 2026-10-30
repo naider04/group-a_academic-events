@@ -132,6 +132,14 @@ nav a.on,nav a:hover{border-color:var(--orange)}
 .gal-foot{margin-top:26px;background:var(--bg-soft);border:1px solid var(--line);border-radius:6px;padding:22px 24px}
 .gal-foot p{margin:0;font-size:13px;color:var(--muted);line-height:1.7}
 .gal-foot b{color:var(--ink)}
+.video-card{margin-bottom:26px;background:var(--card);border:1px solid var(--line);border-radius:6px;overflow:hidden}
+.video-card .frame{position:relative;width:100%;aspect-ratio:9/16;max-height:560px;background:#000}
+.video-card .frame iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
+.video-card figcaption{padding:14px 16px 18px}
+.video-card h3{margin:0 0 6px;font-size:14px;font-weight:700;line-height:1.3}
+.video-card p{margin:0;font-size:12px;color:var(--muted);line-height:1.6}
+.video-card .who{display:block;margin-top:10px;font-size:10px;font-weight:700;letter-spacing:.04em;color:var(--ink)}
+.video-card .who b{color:var(--orange);font-weight:800}
 
 .lightbox{position:fixed;inset:0;z-index:100;display:none;align-items:center;justify-content:center;background:rgba(6,16,30,.92);padding:24px}
 .lightbox.open{display:flex}
@@ -368,6 +376,16 @@ footer .tag{font-style:italic;font-size:11.5px;color:#cfd9e8;border-left:1px sol
         <span class="bar"></span>
       </div>
       <div>
+        <figure class="video-card">
+          <div class="frame">
+            <iframe src="https://www.youtube.com/embed/GD0WwrDxwJc?rel=0" title="Event video · III Academic Poster Session" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+          </div>
+          <figcaption>
+            <h3>Event video</h3>
+            <p>The video documenting the III Academic Poster Session: preparation, presentations and the day of the event.</p>
+            <span class="who"><b>/</b> All group members</span>
+          </figcaption>
+        </figure>
         <div class="gal-grid">
           <figure class="gal-item">
             <div class="ph"><img src="gallery/03c0a54f-c36d-4000-9500-e2083e6633a0.jpeg" alt="Full auditorium group photo of participants, speakers and organizers at the close of the event" loading="lazy"></div>
@@ -475,7 +493,7 @@ footer .tag{font-style:italic;font-size:11.5px;color:#cfd9e8;border-left:1px sol
           </figure>
         </div>
         <div class="gal-foot">
-          <p><b>Event video:</b> the 3–5 minute video documenting the event will be added to this section. All photographs are real evidence captured by the group during the preparation and execution of the III Academic Poster Session.</p>
+          <p><b>Event video:</b> the video documenting the event is available above. All photographs are real evidence captured by the group during the preparation and execution of the III Academic Poster Session.</p>
         </div>
       </div>
     </div>
